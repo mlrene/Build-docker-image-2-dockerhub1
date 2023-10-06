@@ -19,7 +19,7 @@ jobs:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}
       - name: build the docker image
-        run: docker build -t $IMAGE_NAME
+        run: docker build -t $IMAGE_NAME .
       - name: tag the docker image
         run: docker tag $IMAGE_NAME $DOCKERHUB_REPOSITORY:$IMAGE_NAME
       - name: push to dockerhub
