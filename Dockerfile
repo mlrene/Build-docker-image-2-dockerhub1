@@ -1,2 +1,2 @@
 FROM nginx
-ADD ./healet-html/ /usr/share/nginx/html
+ADD ./oxer-html/ /usr/share/nginx/html
