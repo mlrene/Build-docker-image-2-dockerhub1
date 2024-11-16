@@ -1,11 +1,11 @@
 name: Build and push docker image to docker hub
-on: 
-  push:
-    branches:
-      - main
+on: # specify the build trigger 
+  push: #the trigger
+    branches: #the branch on which the code is running
+      - main #the name of the branch
 
-env: 
-  IMAGE_NAME: latest
+env: #environmental variables
+  IMAGE_NAME: latest-new
   DOCKERHUB_REPOSITORY: mlrene/boxer
 jobs:
   build:
@@ -16,8 +16,8 @@ jobs:
       - name: login to dockerhub 
         uses: docker/login-action@v1
         with: 
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_TOKEN}}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build the docker image
         run: docker build -t $IMAGE_NAME .
       - name: tag the docker image
